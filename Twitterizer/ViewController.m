@@ -2,7 +2,7 @@
 //  ViewController.m
 //  Twitterizer
 //
-//  Created by Cindy Barnsdale on 5/25/16.
+//  Created by Salar Kohnechi on 5/25/16.
 //  Copyright © 2016 Salar Kohnechi. All rights reserved.
 //
 
