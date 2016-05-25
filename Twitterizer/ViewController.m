@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+self.countLabel.text = @"count:";
 }
 
 
@@ -69,11 +69,19 @@
     
 //    }
 }
-
+// textViewDidChange is a method that is called every time you type a letter in the text view. This counts the characters for us.
 -(void)textViewDidChange:(UITextView *)textView {
-
-    NSLog(@"hi");
-
+    NSUInteger *counter = self.textView.text.length;
+    
+  // We created a stringWithFormat to allow us to add a string with an integer.
+    self.countLabel.text = [NSString stringWithFormat:@"string count: %i", counter];
+    NSLog(@"%i", counter);
+    
+if (self.textView.text.length >= 140) {
+    NSLog(@"140 characters");
+} else {
+    
+}
 }
 
 
