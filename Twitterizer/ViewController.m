@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -16,12 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)twitterizeButton:(id)sender {
+    NSString *enteredText = self.textView.text;
+    NSMutableString *twitterizeOutput = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < self.textView.text.length - 1; i++) {
+         
+    }
 }
 
 @end
