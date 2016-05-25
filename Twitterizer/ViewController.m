@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-self.countLabel.text = @"count:";
+self.countLabel.text = @"Character count: 0";
 }
 
 
@@ -48,7 +48,7 @@ self.countLabel.text = @"count:";
     
     NSLog(@"without I - %@", stringWithoutI);
     
-    NSString *stringWithoutO = [stringWithoutI stringByReplacingOccurrencesOfString:@"o" withString:@"xxxxx"];
+    NSString *stringWithoutO = [stringWithoutI stringByReplacingOccurrencesOfString:@"o" withString:@""];
     
     NSLog(@"without O - %@", stringWithoutO);
     
@@ -74,15 +74,29 @@ self.countLabel.text = @"count:";
     NSUInteger *counter = self.textView.text.length;
     
   // We created a stringWithFormat to allow us to add a string with an integer.
-    self.countLabel.text = [NSString stringWithFormat:@"string count: %i", counter];
+    self.countLabel.text = [NSString stringWithFormat:@"Character Count: %i", counter];
     NSLog(@"%i", counter);
     
-if (self.textView.text.length >= 140) {
-    NSLog(@"140 characters");
-} else {
+    if (self.textView.text.length >= 140) {
+        
+        
+        NSLog(@"140 characters");
+
+    } else {
     
-}
+    }
 }
 
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+
+    if ([self.textView.text length] < 140) {
+        return YES;
+    } else if ([@"" isEqualToString:text]) {
+        self.textView.text = [self.textView.text substringToIndex:140];
+    } else {
+    return NO;
+    }
+    return YES;
+}
 
 @end
