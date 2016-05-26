@@ -22,13 +22,16 @@
 self.countLabel.text = @"Character count: 0";
 }
 
+// Inserting hashtags
 - (IBAction)hashTagButton:(id)sender {
-    
     NSMutableString *hash = [[NSMutableString alloc] init];
+    // Putting a hashtag at the very beginning.
     [hash insertString:@"#" atIndex:0];
     NSLog(@"value of hash variable: %@", hash);
+    // This replacing a blank space with a space and hashtag.
     NSString *insertedHash = [self.textView.text stringByReplacingOccurrencesOfString:@" " withString:@" #"];
     NSLog(@"val of insertedHash: %@", insertedHash);
+    // ???
     [hash insertString:insertedHash atIndex:1];
     NSLog(@"%@", hash);
     int x = 0;
@@ -73,27 +76,33 @@ self.countLabel.text = @"Character count: 0";
 // original for loop idea:
 //    for (int i = 0; i <= self.textView.text.length - 1; i++) {
     
-    NSString *stringWithoutA = [enteredText stringByReplacingOccurrencesOfString:@"a" withString:@""];
+    NSString *stringWithoutALower = [enteredText stringByReplacingOccurrencesOfString:@"a" withString:@""];
+    NSLog(@"without alower - %@",stringWithoutALower);
+    NSString *stringWithoutELower = [stringWithoutALower stringByReplacingOccurrencesOfString:@"e"withString:@""];
+    NSLog(@"without elower - %@", stringWithoutELower);
+    NSString *stringWithoutILower = [stringWithoutELower stringByReplacingOccurrencesOfString:@"i" withString:@""];
+    NSLog(@"without ilower - %@", stringWithoutILower);
+    NSString *stringWithoutOLower = [stringWithoutILower stringByReplacingOccurrencesOfString:@"o" withString:@""];
+    NSLog(@"without olower - %@", stringWithoutOLower);
+    NSString *stringWithoutULower = [stringWithoutOLower stringByReplacingOccurrencesOfString:@"u" withString:@""];
+    NSLog(@"without ulower - %@", stringWithoutULower);
     
-    NSLog(@"without A - %@",stringWithoutA);
+    NSString *stringWithoutAUpper = [stringWithoutULower stringByReplacingOccurrencesOfString:@"A" withString:@""];
+    NSLog(@"without aupper - %@",stringWithoutAUpper);
+    NSString *stringWithoutEUpper = [stringWithoutAUpper stringByReplacingOccurrencesOfString:@"E" withString:@""];
+    NSLog(@"without eupper- %@",stringWithoutEUpper);
+    NSString *stringWithoutIUpper = [stringWithoutEUpper stringByReplacingOccurrencesOfString:@"I" withString:@""];
+    NSLog(@"without iupper - %@",stringWithoutIUpper);
+    NSString *stringWithoutOUpper = [stringWithoutIUpper stringByReplacingOccurrencesOfString:@"O" withString:@""];
+    NSLog(@"without oupper - %@",stringWithoutOUpper);
+    NSString *stringWithoutUUpper = [stringWithoutOUpper stringByReplacingOccurrencesOfString:@"U" withString:@""];
+    NSLog(@"without uupper - %@",stringWithoutUUpper);
     
-    NSString *stringWithoutE = [stringWithoutA stringByReplacingOccurrencesOfString:@"e" withString:@""];
-
-    NSLog(@"without E - %@", stringWithoutE);
+    // -(NSString)vowelMethod:(NSString *)vowel:
     
-    NSString *stringWithoutI = [stringWithoutE stringByReplacingOccurrencesOfString:@"i" withString:@""];
+    self.textView.text = stringWithoutUUpper;
     
-    NSLog(@"without I - %@", stringWithoutI);
-    
-    NSString *stringWithoutO = [stringWithoutI stringByReplacingOccurrencesOfString:@"o" withString:@""];
-    
-    NSLog(@"without O - %@", stringWithoutO);
-    
-    NSString *stringWithoutU = [stringWithoutO stringByReplacingOccurrencesOfString:@"u" withString:@""];
-    
-    NSLog(@"without U - %@", stringWithoutU);
-    
-    self.textView.text = stringWithoutU;
+  
     
     // To update count label instantly when hitting twitterize button. Added Character count text to keep consistent.
     self.countLabel.text = [NSString stringWithFormat:@"Character count: %i", self.textView.text.length];
@@ -108,12 +117,21 @@ self.countLabel.text = @"Character count: 0";
 //    }
 }
 // textViewDidChange is a method that is called every time you type a letter in the text view. This counts the characters for us.
+
+
+/* Alternate way of limiting characters to 140:
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    return textView.text.length + (text.length - range.length) <= 140;
+}*/
+
+// How to limit to 140 characters without disabling the textview entirely.
 -(void)textViewDidChange:(UITextView *)textView {
-    NSUInteger *counter = self.textView.text.length;
+    NSUInteger counter = self.textView.text.length;
     
   // We created a stringWithFormat to allow us to add a string with an integer.
-    self.countLabel.text = [NSString stringWithFormat:@"Character Count: %i", counter];
-    NSLog(@"%i", counter);
+
+    self.countLabel.text = [NSString stringWithFormat:@"Character Count: %lu", (unsigned long)counter];
+    NSLog(@"%lu", counter);
     
     if (self.textView.text.length >= 140) {
         
