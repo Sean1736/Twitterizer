@@ -22,6 +22,43 @@
 self.countLabel.text = @"Character count: 0";
 }
 
+- (IBAction)hashTagButton:(id)sender {
+    
+    NSMutableString *hash = [[NSMutableString alloc] init];
+    [hash insertString:@"#" atIndex:0];
+    NSLog(@"value of hash variable: %@", hash);
+    NSString *insertedHash = [self.textView.text stringByReplacingOccurrencesOfString:@" " withString:@" #"];
+    NSLog(@"val of insertedHash: %@", insertedHash);
+    [hash insertString:insertedHash atIndex:1];
+    NSLog(@"%@", hash);
+    int x = 0;
+    for (int i = 0; i < hash.length; i++) {
+        char character = [hash characterAtIndex:i];
+        NSLog(@"%c - character", character);
+        NSString *charString = [NSString stringWithFormat:@"%c", character];
+        
+        if ([charString containsString:@"#"]) {
+            NSLog(@"# found");
+            x++;
+            NSLog(@"%i", x);
+        if (x%2) {
+            //odd
+            [charString stringByReplacingOccurrencesOfString:@"#" withString:@""];
+        } else {
+            //even
+        }
+            
+        }
+        
+        
+    }
+  
+    
+    
+    // This places the hashes in the actual text view.
+    self.textView.text = hash;
+}
+
 
 - (IBAction)twitterizeButton:(id)sender {
     
@@ -58,7 +95,8 @@ self.countLabel.text = @"Character count: 0";
     
     self.textView.text = stringWithoutU;
     
-    
+    // To update count label instantly when hitting twitterize button. Added Character count text to keep consistent.
+    self.countLabel.text = [NSString stringWithFormat:@"Character count: %i", self.textView.text.length];
     
 //        if ([enteredText characterAtIndex:i] ="a" || [enteredText characterAtIndex:i] = "E") {
 //            ;

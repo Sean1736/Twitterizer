@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -40,6 +40,13 @@
                                 <state key="normal" title="Twitterize"/>
                                 <connections>
                                     <action selector="twitterizeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="riT-Au-3F4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgn-Ad-aNI">
+                                <rect key="frame" x="271" y="261" width="58" height="30"/>
+                                <state key="normal" title="Hashtag"/>
+                                <connections>
+                                    <action selector="hashTagButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6I8-SW-tkR"/>
                                 </connections>
                             </button>
                         </subviews>
